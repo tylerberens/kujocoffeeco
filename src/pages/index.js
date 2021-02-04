@@ -21,9 +21,10 @@ class RootIndex extends React.Component {
             backgroundImage: `url(${author.node.image.file.url})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
+            position: 'relative',
             backgroundRepeat: 'no-repeat'}}>
               <div style={{position:'absolute', width:'100%', height:'100%', background:'#00000073'}}></div>
-              <div style={{position:'absolute',top:'50%', left:'50%', transform:'translate(-50%, -50%)', textAlign:'center',fontSize:'2em', color:'#fff'}}>
+              <div class="temptext">
                 <h1 style={{fontWeight:'800', margin:'0'}}>Kujo Coffee Co.</h1>
                 <p style={{margin:'0'}}>Coming Soon!</p>
               </div>
