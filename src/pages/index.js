@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import Hero from '../components/hero'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
@@ -14,11 +13,22 @@ class RootIndex extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <div style={{ background: '#f1f1f1' }}>
           <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
+          <div style={{
+            height: '100vh',
+            width: '100vw',
+            backgroundImage: `url(${author.node.image.file.url})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'}}>
+              <div style={{position:'absolute', width:'100%', height:'100%', background:'#00000073'}}></div>
+              <div style={{position:'absolute',top:'50%', left:'50%', transform:'translate(-50%, -50%)', textAlign:'center',fontSize:'2em', color:'#fff'}}>
+                <h1 style={{fontWeight:'800', margin:'0'}}>Kujo Coffee Co.</h1>
+                <p style={{margin:'0'}}>Coming Soon!</p>
+              </div>
+            </div>
+          {/* <div className="wrapper">
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
@@ -28,7 +38,7 @@ class RootIndex extends React.Component {
                 )
               })}
             </ul>
-          </div>
+          </div> */}
         </div>
       </Layout>
     )
@@ -47,7 +57,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            fluid(maxWidth: 1920, maxHeight: 1080, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
@@ -69,7 +79,10 @@ export const pageQuery = graphql`
             shortBio
           }
           title
-          heroImage: image {
+          image {
+            file{
+              url
+            }
             fluid(
               maxWidth: 1180
               maxHeight: 480
