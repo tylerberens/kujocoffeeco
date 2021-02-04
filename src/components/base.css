@@ -2,7 +2,7 @@
   font-family: "Poiret One", cursive;
   font-weight: 400;
   font-style: cursive;
-  src: url("/static/Poiret_One/PoiretOne-Regular.ttf") format("ttf");
+  src: url("/Poiret_One/PoiretOne-Regular.ttf") format("ttf");
   font-display: swap;
 }
 body {
